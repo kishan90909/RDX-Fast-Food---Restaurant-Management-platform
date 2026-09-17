@@ -1,6 +1,28 @@
-# RDX Fast Food
+# RDX Fast Food -- Restaurant-Management-platform
 
-A full-stack restaurant ordering application built with React/Vite on the frontend and Node.js/Express/MongoDB on the backend.
+<div align="center">
+  <h3>
+    🚀 Live Demo:
+    <a href="https://rdx-fast-food.netlify.app" target="_blank">
+      View Live Here
+    </a>
+  </h3>
+</div>
+
+<div align="center">
+
+![Frontend](https://img.shields.io/badge/Frontend-React%2FVite-61DAFB?logo=react&logoColor=white)
+![Backend](https://img.shields.io/badge/Backend-Node.js%2FExpress-339933?logo=node.js&logoColor=white)
+![Database](https://img.shields.io/badge/Database-MongoDB_Atlas-47A248?logo=mongodb&logoColor=white)
+![Hosting](https://img.shields.io/badge/Frontend-Netlify-00C7B7?logo=netlify&logoColor=white)
+![API](https://img.shields.io/badge/API-Render-46E3B7?logo=render&logoColor=white)
+![Authentication](https://img.shields.io/badge/Auth-HTTP--Only_Cookies-orange)
+
+</div>
+
+---
+
+A full-stack restaurant management platform built with the MERN stack, featuring customer ordering, authentication, cart management, order tracking, admin management, inventory, analytics, invoices, loyalty points, AI recommendations, and personalized menus.
 
 
 ## Technology Stack
