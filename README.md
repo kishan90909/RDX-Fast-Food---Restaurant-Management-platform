@@ -22,7 +22,7 @@
 
 ---
 
-A full-stack restaurant management platform built with the MERN stack, featuring customer ordering, authentication, cart management, order tracking, admin management, inventory, analytics, invoices, loyalty points, AI recommendations, and personalized menus.
+A restaurant management platform built with the MERN stack, featuring customer ordering, authentication, cart management, order tracking, admin management, inventory, analytics, invoices, loyalty points, AI recommendations, and personalized menus.
 
 
 ## Technology Stack
