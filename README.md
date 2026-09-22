@@ -1,4 +1,4 @@
-# RDX Fast Food -- Restaurant-Management-platform
+# 🍔 RDX Fast Food — Restaurant Management Platform
 
 <div align="center">
   <h3>
@@ -14,424 +14,1380 @@
 ![Frontend](https://img.shields.io/badge/Frontend-React%2FVite-61DAFB?logo=react&logoColor=white)
 ![Backend](https://img.shields.io/badge/Backend-Node.js%2FExpress-339933?logo=node.js&logoColor=white)
 ![Database](https://img.shields.io/badge/Database-MongoDB_Atlas-47A248?logo=mongodb&logoColor=white)
-![Hosting](https://img.shields.io/badge/Frontend-Netlify-00C7B7?logo=netlify&logoColor=white)
-![API](https://img.shields.io/badge/API-Render-46E3B7?logo=render&logoColor=white)
-![Authentication](https://img.shields.io/badge/Auth-HTTP--Only_Cookies-orange)
+![ODM](https://img.shields.io/badge/ODM-Mongoose-880000?logo=mongodb&logoColor=white)
+![Authentication](https://img.shields.io/badge/Auth-JWT%20%2B%20HTTP--Only%20Cookie-orange)
+![Frontend Hosting](https://img.shields.io/badge/Frontend-Netlify-00C7B7?logo=netlify&logoColor=white)
+![Backend Hosting](https://img.shields.io/badge/Backend-Render-46E3B7?logo=render&logoColor=white)
 
 </div>
 
 ---
 
-A restaurant management platform built with the MERN stack, featuring customer ordering, authentication, cart management, order tracking, admin management, inventory, analytics, invoices, loyalty points, AI recommendations, and personalized menus.
+## 📌 What Is RDX Fast Food?
+
+**RDX Fast Food** is a full-stack restaurant ordering and management platform that brings the customer ordering journey and restaurant operations into one connected system.
+
+The platform is designed around a clear separation of responsibilities:
+
+- **React + Vite** delivers the customer and administration interfaces.
+- **Node.js + Express** provides the application API, authentication, authorization and business logic.
+- **MongoDB Atlas + Mongoose** stores persistent restaurant and customer data.
+- **Netlify** hosts the production frontend.
+- **Render** hosts the production backend API.
 
 
-## Technology Stack
 
-### Frontend
-- React
-- Vite
-- JavaScript/JSX
-- Tailwind CSS / existing project styling
-- MongoDB as the authoritative application data store; authentication uses secure HTTP-only cookies
+---
 
-### Backend
-- Node.js
-- Express
-- MongoDB
-- Mongoose
-- JWT authentication
-- Role-based authorization
-- PDF invoice generation
+## 🔑 Demo Login Credentials
 
-## Main Project Features
+Use these demo credentials to test the RDX Fast Food application.
 
-### Version 1 — Customer Ordering
-- Search
-- Menu filters
-- Favorites
-- Cart
-- Quantity control
-- Checkout
-- Delivery / Pickup
-- WhatsApp ordering support
+### Customer
+- **Email:** `customer@test.com`
+- **Password:** `123456`
 
-### Version 2 — Customer Account & Ordering Enhancements
-- Login / OTP
-- Order history
-- Reorder
-- Reviews
-- Coupons
-- Offers
-- Order tracking
-- Notifications
+### Admin
+- **Email:** `admin@rdxfastfood.com`
+- **Password:** `admin123`
 
-### Version 3 — Restaurant Administration
-- Admin dashboard
-- Menu management
-- Order management
-- Kitchen dashboard
-- Inventory management
-- Analytics
-- Invoice generation
+## 🎯 What RDX Fast Food Does
 
-### Version 4 — Personalization & Advanced Intelligence
-- Loyalty points
-- AI recommendations
-- Personalized menu
-- Advanced analytics
+RDX connects two sides of restaurant operations.
 
-## Authentication
+### 👤 Customer Experience
 
-Authentication uses a JWT issued by the backend and stored in a secure HTTP-only `rdx_auth` cookie. The frontend validates the current session through `/api/auth/me` and does not store authentication tokens in browser storage.
+Customers can:
 
-The application uses role-based access control for customer and admin operations.
+- Discover the restaurant menu.
+- Search and filter food items.
+- View prices and availability.
+- Save favorite items.
+- Manage a persistent cart.
+- Adjust quantities.
+- Choose delivery or pickup.
+- Complete checkout.
+- Apply eligible coupons and offers.
+- Redeem available loyalty points.
+- Place orders.
+- View order history.
+- Reorder previous purchases.
+- Track active orders.
+- Receive notifications.
+- Submit and update reviews.
+- View personalized menu sections.
+- Receive food recommendations.
+- Manage their account information.
 
-Default development admin credentials used by the project:
+### 🛠️ Restaurant Administration
 
-- Email: `admin@rdxfastfood.com`
-- Password: `admin123`
+Administrators can:
 
-Change development credentials before deploying to production.
+- Monitor restaurant activity from a centralized dashboard.
+- Manage menu items and categories.
+- Control menu availability.
+- Mark bestsellers and chef's specials.
+- View and manage customer orders.
+- Update order and payment status.
+- Operate the kitchen workflow.
+- Manage inventory and stock levels.
+- Detect low-stock and out-of-stock items.
+- Review operational and business analytics.
+- Generate PDF invoices.
+- Monitor coupon, offer and loyalty activity.
 
-## Customer Features
+---
 
-### Cart
+# ✨ Product Capabilities
 
-Customer carts are account isolated and stored in MongoDB. Cart ownership is derived from the authenticated user; the frontend does not use browser storage for cart persistence.
+## 🍔 Menu Discovery
 
-### Orders
+The customer menu is backed by MongoDB through the backend API.
 
-Orders are stored in MongoDB and associated with the authenticated customer. Orders support delivery and pickup workflows, status history, tracking steps, payment information, discounts, coupons/offers and loyalty information.
+Customers can:
 
-### Order Status Flows
+- Browse menu items.
+- Search items.
+- Filter items.
+- View pricing.
+- View availability.
+- Identify bestseller items.
+- Identify chef's special items.
+- Discover personalized and recommended items.
 
-Delivery:
+Menu changes made by administrators are persisted and reflected in the customer-facing menu.
 
-`Order Placed → Preparing → Ready → Out for Delivery → Delivered`
+---
 
-Pickup:
+## ❤️ Favorites
 
-`Order Placed → Preparing → Ready for Pickup → Picked Up`
+Customers can save menu items as favorites.
 
-### Notifications
+Favorites are associated with the authenticated customer account, keeping one customer's saved items isolated from other accounts.
 
-Customer notifications support order, tracking, promotion and informational messages. Order creation and admin status changes can create notifications.
+---
 
-### Coupons
+## 🛒 Cart Management
 
-The project includes coupon support with one-time-per-user usage enforcement.
+The cart is account-scoped and MongoDB-backed.
 
-Example coupon codes:
+It supports:
 
-- `RDX10`
-- `WELCOME50`
-- `RDX20`
+- Adding items.
+- Removing items.
+- Quantity changes.
+- Account-specific persistence.
+- Backend validation.
 
-### Offers
+The frontend does not use browser storage as the authoritative source for persistent cart data.
 
-The project includes one-time-per-user offers with usage tracking.
+---
 
-Example offers:
+## 💳 Checkout & Ordering
 
-- `SAVE100`
-- `RDX15`
-- `MEGA200`
+Checkout brings together:
 
-### Loyalty Points
+- Customer information.
+- Delivery details.
+- Pickup selection.
+- Cart validation.
+- Quantity validation.
+- Coupon validation.
+- Offer validation.
+- Loyalty validation.
+- Price calculation.
+- Payment/bill status.
+- Final order creation.
 
-Current loyalty rule:
+The backend validates and persists the final order in MongoDB.
 
-**Earn 1 point for every ₹50 spent after coupon/offer discounts.**
+---
 
-Redemption is validated by the backend. The loyalty system maintains available points, lifetime earned points, redeemed points and transaction history.
+## 🚚 Delivery & Pickup
 
-## Admin Features
+### Delivery Workflow
 
-### Admin Dashboard
+```text
+Order Placed
+    ↓
+Preparing
+    ↓
+Ready
+    ↓
+Out for Delivery
+    ↓
+Delivered
+```
 
-Provides MongoDB-backed operational information such as:
+### Pickup Workflow
 
-- Orders
-- Revenue
-- Customers
-- Active/completed orders
-- Menu item availability
-- Order status distribution
-- Recent orders
+```text
+Order Placed
+    ↓
+Preparing
+    ↓
+Ready for Pickup
+    ↓
+Picked Up
+```
 
-### Menu Management
+Order status and tracking state are persisted by the backend.
 
-Admin menu operations include:
+---
 
-- Add menu item
-- Edit menu item
-- Delete menu item
-- Delete category
-- Availability control
-- Bestseller flag
-- Chef's Special flag
-- Category and price management
+## 📦 Order History & Reorder
 
-Menu changes are persisted in MongoDB and available to the customer menu.
+Customers can:
 
-### Order Management
+- View previous orders.
+- Inspect order details.
+- Track active orders.
+- Reorder previous purchases.
+- Access their own invoice information where supported.
 
-Admin can view customer orders and update order status and payment status. Status history and tracking state are persisted.
+Protected APIs prevent customers from accessing another customer's orders or invoices.
 
-### Kitchen Dashboard
+---
 
-Kitchen operations are backed by MongoDB. Kitchen staff/admin can work with preparing and ready states while maintaining the restaurant's existing order workflow.
+## ⭐ Reviews
 
-### Inventory
+Customers can submit reviews for eligible orders and update their review information through the protected review workflow.
+
+---
+
+## 🎟️ Coupons
+
+Coupon functionality includes server-side validation and one-time-per-customer usage enforcement.
+
+Example coupon codes included by the project:
+
+```text
+RDX10
+WELCOME50
+RDX20
+```
+
+Coupon eligibility and discount calculation are controlled by the backend.
+
+---
+
+## 🎁 Offers
+
+Offer functionality includes usage tracking and one-time-per-customer enforcement.
+
+Example offer codes included by the project:
+
+```text
+SAVE100
+RDX15
+MEGA200
+```
+
+Offer validation and discount processing are handled by the backend.
+
+---
+
+## 🏆 Loyalty Points
+
+The current loyalty rule is:
+
+> **Earn 1 point for every ₹50 spent after coupon and offer discounts.**
+
+The loyalty system maintains:
+
+- Available points.
+- Lifetime earned points.
+- Redeemed points.
+- Loyalty transaction history.
+
+Loyalty redemption is validated server-side.
+
+---
+
+## 🤖 AI Recommendations
+
+The recommendation system uses available customer and menu signals including:
+
+- Previous orders.
+- Frequently purchased items.
+- Favorites.
+- Preferred categories.
+- Bestsellers.
+- Chef's specials.
+- Current availability.
+- Inventory availability.
+
+Unavailable or out-of-stock products are excluded from recommendations.
+
+---
+
+## 🎯 Personalized Menu
+
+The personalized menu can provide sections such as:
+
+- **For You**
+- **Favorites**
+- **Recently Ordered**
+- **Try Something New**
+
+Personalization uses the authenticated customer's own activity and menu information. Customer-specific personalization data is not exposed across accounts.
+
+---
+
+## 🔔 Notifications
+
+Notifications can cover:
+
+- Orders.
+- Order tracking.
+- Promotions.
+- Informational messages.
+
+Order creation and administrative status changes can generate notifications.
+
+---
+
+# 🔐 Authentication & Authorization
+
+RDX uses backend-controlled authentication.
+
+The system uses:
+
+- JWT authentication.
+- Secure HTTP-only `rdx_auth` cookies.
+- Role-based authorization.
+- Protected customer routes.
+- Protected administrator routes.
+- Server-side customer ownership checks.
+
+Authentication tokens are not stored in `localStorage` or `sessionStorage`.
+
+The frontend validates the current authenticated session through the backend authentication API.
+
+### Development Administrator Configuration
+
+The application supports administrator initialization through environment variables:
+
+```env
+ADMIN_EMAIL=admin@rdxfastfood.com
+ADMIN_PASSWORD=<your-development-password>
+```
+
+Use a strong, unique administrator password in production.
+
+---
+
+# 🛠️ Restaurant Administration
+
+## 📊 Admin Dashboard
+
+The dashboard provides MongoDB-backed operational information such as:
+
+- Orders.
+- Revenue.
+- Customers.
+- Active and completed orders.
+- Menu availability.
+- Order status distribution.
+- Recent orders.
+
+---
+
+## 🍔 Menu Management
+
+Administrators can:
+
+- Add menu items.
+- Edit menu items.
+- Delete menu items.
+- Delete categories.
+- Control availability.
+- Mark bestsellers.
+- Mark chef's specials.
+- Manage categories.
+- Manage prices.
+
+All menu changes are persisted in MongoDB.
+
+---
+
+## 📋 Order Management
+
+Administrators can:
+
+- View customer orders.
+- Inspect order details.
+- Update order status.
+- Update payment status.
+- Maintain order progression.
+- Persist tracking state.
+
+---
+
+## 👨‍🍳 Kitchen Dashboard
+
+The kitchen dashboard is connected to the order lifecycle.
+
+Kitchen/admin operations support states such as:
+
+```text
+Order Placed
+    ↓
+Preparing
+    ↓
+Ready
+```
+
+Kitchen operations are persisted through the backend and MongoDB.
+
+---
+
+## 📦 Inventory Management
 
 Inventory supports:
 
-- Stock quantities
-- Stock adjustments
-- Low-stock thresholds
-- Low-stock detection
-- Out-of-stock detection
-- Search/filtering
-- Menu availability based on stock
-- Stock reduction during order creation
-- Stock restoration when a failed order operation requires rollback
+- Stock quantities.
+- Stock adjustments.
+- Low-stock thresholds.
+- Low-stock detection.
+- Out-of-stock detection.
+- Search and filtering.
+- Menu availability based on stock.
+- Stock reduction during order creation.
+- Stock restoration when a failed order operation requires rollback.
 
-### Analytics
+Inventory changes are controlled by the backend.
 
-Analytics are calculated from backend/MongoDB data and include operational and business metrics such as:
+---
 
-- Revenue
-- Orders
-- Average order value
-- Customers
-- Repeat customers
-- Items sold
-- Discounts
-- Payment mix
-- Order status
-- Peak ordering hours
-- Top-selling items
-- Category revenue
-- Coupon/offer performance
-- Delivery vs pickup
-- Loyalty performance
-- Daily revenue
+## 📈 Analytics
 
-Supported reporting periods include 1, 7, 30, 90 days and all time, depending on the analytics endpoint/UI.
+Analytics are calculated from backend/MongoDB data.
 
-### Invoice Generation
+Metrics include:
+
+- Revenue.
+- Orders.
+- Average order value.
+- Customers.
+- Repeat customers.
+- Items sold.
+- Discounts.
+- Payment mix.
+- Order status.
+- Peak ordering hours.
+- Top-selling items.
+- Category revenue.
+- Coupon performance.
+- Offer performance.
+- Delivery vs pickup.
+- Loyalty performance.
+- Daily revenue.
+
+Supported reporting periods include:
+
+```text
+1 Day
+7 Days
+30 Days
+90 Days
+All Time
+```
+
+---
+
+## 🧾 Invoice Generation
 
 Invoices are generated from persisted MongoDB order data.
 
 Invoice information can include:
 
-- Order ID
-- Date
-- Customer details
-- Delivery/pickup type
-- Ordered items
-- Quantity
-- Item prices
-- Subtotal
-- Coupon discount
-- Offer discount
-- Loyalty discount/points information
-- Total
-- Payment/bill status
+- Order ID.
+- Date.
+- Customer details.
+- Delivery/pickup type.
+- Ordered items.
+- Quantity.
+- Item prices.
+- Subtotal.
+- Coupon discount.
+- Offer discount.
+- Loyalty discount and points information.
+- Total.
+- Payment/bill status.
 
-Admin can access invoices for orders they manage, while customers are restricted to their own invoices.
+Invoice access is protected according to the authenticated customer or administrator role.
 
-## AI Recommendations
+---
 
-The recommendation system uses available customer and menu signals such as:
+# 🔌 Backend API Areas
 
-- Previous orders
-- Frequently purchased items
-- Favorites
-- Preferred categories
-- Bestsellers
-- Chef's Specials
-- Current availability/inventory
-
-Unavailable or out-of-stock products are excluded from recommendations.
-
-## Personalized Menu
-
-The personalized menu uses customer-specific behavior and menu information to produce sections such as:
-
-- For You
-- Favorites
-- Recently Ordered
-- Try Something New
-
-The backend uses the authenticated customer's identity and does not expose another customer's personalization data.
-
-## Important API Areas
-
-The backend is organized around API groups including:
-
-- `/api/auth`
-- `/api/menu`
-- `/api/favorites`
-- `/api/cart`
-- `/api/coupons`
-- `/api/offers`
-- `/api/notifications`
-- `/api/orders`
-- `/api/kitchen`
-- `/api/inventory`
-- `/api/analytics`
-- `/api/invoices`
-- `/api/loyalty`
-- `/api/recommendations`
-- `/api/personalized-menu`
-
-Exact endpoint availability should be checked in the corresponding route files in `server/routes`.
-
-## Backend Structure
+The backend is organized around functional API areas including:
 
 ```text
-Backend/
-├── config/
-│   └── db.js
-├── controllers/
-├── middleware/
-├── models/
-├── routes/
-├── services/
-├── seedMenuData.js
-├── seedCoupons.js
-├── seedOffers.js
+/api/auth
+/api/menu
+/api/favorites
+/api/cart
+/api/coupons
+/api/offers
+/api/notifications
+/api/orders
+/api/kitchen
+/api/inventory
+/api/analytics
+/api/invoices
+/api/loyalty
+/api/recommendations
+/api/personalized-menu
+/api/reviews
+```
+
+Exact endpoint definitions and request/response contracts are maintained in the backend route implementation.
+
+---
+
+# 🧰 Technology Stack
+
+## Frontend
+
+| Technology | Role |
+|---|---|
+| React | Component-based user interface |
+| Vite | Development server and production build tooling |
+| JavaScript / JSX | Application logic and UI components |
+| CSS / Existing project styling | Visual presentation and responsive interface |
+| Fetch API | Frontend-to-backend communication |
+
+
+---
+
+## Backend
+
+| Technology | Role |
+|---|---|
+| Node.js | JavaScript runtime |
+| Express | REST API and HTTP server |
+| Mongoose | MongoDB object modeling and data access |
+| JWT | Authentication |
+| HTTP-only Cookies | Secure session transport |
+| Role-based Authorization | Customer/admin access control |
+| CORS | Controlled frontend/backend communication |
+| PDF Generation | Invoice generation |
+
+---
+
+## Database
+
+| Technology | Role |
+|---|---|
+| MongoDB Atlas | Production cloud database |
+| MongoDB | Persistent application data store |
+| Mongoose | Backend data modeling and database access |
+
+MongoDB is the authoritative persistent data store for the application.
+
+---
+
+## Deployment & Infrastructure
+
+| Service | Responsibility |
+|---|---|
+| GitHub | Source control and deployment source |
+| Netlify | Production React/Vite frontend |
+| Render | Production Node.js/Express backend |
+| MongoDB Atlas | Production database |
+
+---
+
+# 🏗️ Application Architecture
+
+```text
+                         ┌──────────────────────┐
+                         │       Customer       │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │ React + Vite         │
+                         │ Netlify              │
+                         └──────────┬───────────┘
+                                    │
+                                  /api/*
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │ Netlify API Proxy    │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │ Node.js + Express    │
+                         │ Render               │
+                         └──────────┬───────────┘
+                                    │
+                    ┌───────────────┴───────────────┐
+                    │                               │
+                    ▼                               ▼
+           ┌────────────────┐             ┌────────────────┐
+           │ Authentication │             │ Business Logic │
+           │ JWT + Cookie   │             │ Validation     │
+           └────────────────┘             └───────┬────────┘
+                                                   │
+                                                   ▼
+                                            ┌──────────────┐
+                                            │   Mongoose   │
+                                            └──────┬───────┘
+                                                   │
+                                                   ▼
+                                          ┌─────────────────┐
+                                          │ MongoDB Atlas   │
+                                          │ rdx_fast_food   │
+                                          └─────────────────┘
+```
+
+---
+
+# 🔄 Complete End-to-End Workflow
+
+## 1. Customer Opens the Platform
+
+```text
+Customer
+   ↓
+https://rdx-fast-food.netlify.app
+   ↓
+React + Vite Frontend
+```
+
+The customer interacts with the RDX Fast Food interface.
+
+---
+
+## 2. Frontend Requests Data
+
+```text
+React Frontend
+      ↓
+     /api
+      ↓
+Netlify Proxy
+      ↓
+Render Backend
+```
+
+The browser does not connect directly to MongoDB.
+
+---
+
+## 3. Backend Handles the Request
+
+```text
+Node.js + Express
+       ↓
+Authentication
+       ↓
+Authorization
+       ↓
+Validation
+       ↓
+Business Logic
+       ↓
+Mongoose
+       ↓
+MongoDB Atlas
+```
+
+The backend controls permissions, validation, calculations and database operations.
+
+---
+
+## 4. Customer Builds a Cart
+
+```text
+Browse Menu
+    ↓
+Search / Filter
+    ↓
+Select Food
+    ↓
+Add to Favorites
+    ↓
+Add to Cart
+    ↓
+Change Quantity
+```
+
+Cart information is persisted for the authenticated account through MongoDB.
+
+---
+
+## 5. Customer Checks Out
+
+```text
+Cart
+ ↓
+Checkout
+ ↓
+Delivery / Pickup
+ ↓
+Validate Items
+ ↓
+Validate Stock
+ ↓
+Validate Coupon
+ ↓
+Validate Offer
+ ↓
+Validate Loyalty
+ ↓
+Calculate Final Amount
+```
+
+---
+
+## 6. Order Is Created
+
+```text
+Validated Checkout
+       ↓
+Create Order
+       ↓
+Persist Order in MongoDB
+       ↓
+Update Inventory
+       ↓
+Record Discount Usage
+       ↓
+Process Loyalty Information
+       ↓
+Create Notification
+```
+
+If a protected order operation fails, the backend provides rollback handling for relevant inventory, coupon, offer and loyalty changes.
+
+---
+
+## 7. Restaurant Processes the Order
+
+```text
+Order Placed
+     ↓
+Admin / Kitchen Dashboard
+     ↓
+Preparing
+     ↓
+Ready
+     ↓
+Delivery / Pickup
+     ↓
+Completed
+```
+
+---
+
+## 8. Customer Tracks the Order
+
+```text
+Customer
+    ↓
+Order History / Tracking
+    ↓
+Backend API
+    ↓
+MongoDB
+    ↓
+Current Order Status
+```
+
+---
+
+## 9. Restaurant Reviews Performance
+
+```text
+Orders
+  +
+Customers
+  +
+Inventory
+  +
+Payments
+  +
+Discounts
+  +
+Loyalty
+      ↓
+MongoDB
+      ↓
+Analytics API
+      ↓
+Admin Analytics
+```
+
+---
+
+# 📁 Project Folder Structure
+
+```text
+RDX-Fast-Food/
+│
+├── Backend/
+│   ├── config/
+│   │   └── db.js
+│   │
+│   ├── controllers/
+│   │
+│   ├── middleware/
+│   │
+│   ├── models/
+│   │
+│   ├── routes/
+│   │
+│   ├── services/
+│   │
+│   ├── seedMenuData.js
+│   ├── seedCoupons.js
+│   ├── seedOffers.js
+│   ├── package.json
+│   ├── .env
+│   └── .env.example
+│
+├── src/
+│   ├── components/
+│   │   ├── Navbar
+│   │   ├── Menu
+│   │   ├── Cart
+│   │   ├── Checkout
+│   │   ├── Order History
+│   │   ├── Order Tracking
+│   │   ├── Reviews
+│   │   ├── Notifications
+│   │   ├── Loyalty Points
+│   │   ├── AI Recommendations
+│   │   ├── Personalized Menu
+│   │   ├── Admin Dashboard
+│   │   ├── Menu Management
+│   │   ├── Order Management
+│   │   ├── Kitchen Dashboard
+│   │   ├── Inventory Management
+│   │   ├── Analytics
+│   │   └── Invoice
+│   │
+│   ├── App.jsx
+│   ├── api.js
+│   ├── main.jsx
+│   └── index.css
+│
+├── public/
+│
+├── netlify.toml
 ├── package.json
-├── .env
-└── .env.example
+├── .gitignore
+└── README.md
 ```
 
-## Frontend Structure
+The folder structure separates frontend presentation, backend API responsibilities, database access, authentication, business logic and deployment configuration.
+
+---
+
+# ⚙️ Environment Configuration
+
+Environment variables keep deployment configuration and secrets outside application source code.
+
+## Frontend `.env`
+
+Create the frontend environment file in the project root when local configuration is required:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+For the deployed Netlify frontend:
+
+```env
+VITE_API_URL=/api
+```
+
+### Important
+
+Never place the following in frontend `VITE_*` variables:
+
+- MongoDB credentials.
+- JWT secrets.
+- Admin passwords.
+- Private backend secrets.
+
+Frontend `VITE_*` values are included in the browser build.
+
+---
+
+## Backend `.env`
+
+Create:
 
 ```text
-src/
-├── components/
-├── App.jsx
-├── api.js
-├── main.jsx
-└── index.css
+Backend/.env
 ```
 
-Important UI components include customer and administration modules such as:
+Use the following structure:
 
-- Navbar
-- Menu
-- Cart
-- Checkout
-- Order History
-- Order Tracking
-- Reviews
-- Notifications
-- Loyalty Points
-- AI Recommendations
-- Personalized Menu
-- Admin Dashboard
-- Menu Management
-- Order Management
-- Kitchen Dashboard
-- Inventory Management
-- Analytics
-- Invoice
+```env
+NODE_ENV=development
 
-## Environment Configuration
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/rdx_fast_food?retryWrites=true&w=majority
 
-Frontend API base URL is controlled through:
+CLIENT_URL=http://localhost:5173,https://rdx-fast-food.netlify.app
 
-`VITE_API_URL`
+JWT_SECRET=<strong-random-secret>
 
-If it is not supplied, the application defaults to:
+ADMIN_EMAIL=admin@rdxfastfood.com
+ADMIN_PASSWORD=<strong-development-password>
+```
 
-`http://localhost:5000/api`
+### Environment Variable Reference
 
-Backend MongoDB configuration and authentication secrets are supplied through the backend `.env` file. Do not commit production secrets to source control.
+| Variable | Purpose |
+|---|---|
+| `NODE_ENV` | Runtime environment |
+| `MONGODB_URI` | MongoDB Atlas connection |
+| `CLIENT_URL` | Allowed frontend origin(s) |
+| `JWT_SECRET` | JWT signing secret |
+| `ADMIN_EMAIL` | Administrator email |
+| `ADMIN_PASSWORD` | Administrator password |
+| `VITE_API_URL` | Frontend API base URL |
 
-## Running the Project
+### Production Rule
 
-Install frontend dependencies:
+Use unique production values for:
+
+```env
+JWT_SECRET
+ADMIN_PASSWORD
+```
+
+Never commit the real `.env` file to GitHub.
+
+Use `.env.example` to document required configuration without exposing secrets.
+
+Example:
+
+```env
+NODE_ENV=development
+MONGODB_URI=
+CLIENT_URL=http://localhost:5173
+JWT_SECRET=
+ADMIN_EMAIL=
+ADMIN_PASSWORD=
+```
+
+---
+
+# 🚀 Local Development
+
+## Requirements
+
+Install:
+
+- Node.js.
+- npm.
+- Git.
+- MongoDB Atlas access or a compatible MongoDB database.
+
+---
+
+## Install Frontend Dependencies
 
 ```bash
 npm install
 ```
 
-Install backend dependencies:
+## Install Backend Dependencies
 
 ```bash
 cd Backend
 npm install
+cd ..
 ```
 
-Configure `Backend/.env` with the MongoDB connection, client URL, JWT secret and admin credentials.
+## Configure Environment
 
-Start both frontend and backend together from the project root:
+Create:
+
+```text
+Backend/.env
+```
+
+and configure:
+
+```env
+NODE_ENV=development
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/rdx_fast_food?retryWrites=true&w=majority
+CLIENT_URL=http://localhost:5173
+JWT_SECRET=<strong-random-secret>
+ADMIN_EMAIL=admin@rdxfastfood.com
+ADMIN_PASSWORD=<development-password>
+```
+
+For local frontend API access:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+## Start Frontend & Backend Together
+
+From the project root:
 
 ```bash
 npm run dev:full
 ```
 
-Or run them separately:
+## Or Start Separately
+
+Frontend:
 
 ```bash
 npm run dev
 ```
 
-and in another terminal:
+Backend:
 
 ```bash
 npm run server
 ```
 
-The root `server` script points to the actual `Backend/` directory.
+The root server script points to the actual `Backend/` directory.
 
-## Security Notes
+---
 
-- Protected customer/admin routes require JWT authentication.
-- Admin operations require the admin role.
-- Customer ownership is derived from authentication rather than trusted client-supplied ownership fields.
-- Loyalty redemption is validated server-side.
-- Inventory changes are handled server-side.
-- Customers cannot access other customers' orders or invoices through protected APIs.
-- Production deployments should use strong secrets and non-default administrator credentials.
+# 🌱 Database Initialization
 
-## UI / Theme Preservation Rule
+The backend contains seed utilities for core application data, including:
 
-**The existing RDX Fast Food UI and theme must not be changed unless explicitly requested.**
+```text
+seedMenuData.js
+seedCoupons.js
+seedOffers.js
+```
 
-Future development should:
+MongoDB stores the persistent application state after initialization.
 
-- Preserve the existing layout
-- Preserve colors and visual styling
-- Preserve existing buttons and navigation
-- Preserve existing functionality
-- Add backend functionality without unnecessary redesign
-- Keep new functionality consistent with the current RDX Fast Food design language
+The backend is responsible for reading and writing application data rather than treating the frontend as the source of truth.
 
-## Development Roadmap
+---
 
-### Completed
+# 🔒 Security & Data Ownership
 
-- Backend V1 — Customer ordering foundation
-- Backend V2 — Authentication, customer ordering enhancements, coupons, offers, tracking and notifications
-- Backend V3 — Admin Dashboard, Menu Management, Order Management, Kitchen Dashboard, Inventory, Analytics and Invoice Generation
-- Backend V4 — Loyalty Points, AI Recommendations, Personalized Menu and Advanced Analytics
+RDX uses server-side authorization and ownership checks.
 
-### Removed From Scope
+Security principles include:
 
-The following features are intentionally not part of the final roadmap:
+- JWT authentication.
+- HTTP-only authentication cookies.
+- Role-based access control.
+- Protected customer APIs.
+- Protected admin APIs.
+- Server-side customer ownership checks.
+- Server-side inventory validation.
+- Server-side loyalty validation.
+- Backend-controlled order calculations.
+- Protected invoice access.
+- No authentication tokens in browser storage.
+- No reliance on browser storage for persistent business data.
 
-- Multiple Restaurant Branches
-- Automated Marketing
+Customers can access only their own protected customer resources.
 
-They should not be reintroduced unless explicitly requested.
+Administrators require the administrator role for administrative operations.
 
-## Project Principle
+---
 
-The application is developed incrementally. Each version builds on the previous version, with MongoDB as the backend source of truth for persisted business data and the existing frontend UI/theme preserved throughout.
+# 💾 Data Storage Policy
 
-## Data Storage Policy
-All persistent application data is backend/MongoDB driven. The frontend does not use browser storage APIs for authentication, cart, favorites, menu, inventory, orders, notifications, reviews, loyalty, or other application state. Authentication is maintained with a secure HTTP-only cookie issued by the backend.
+Persistent application data is backend/MongoDB driven.
+
+MongoDB is the authoritative source for:
+
+- Authentication-related user persistence.
+- Cart data.
+- Favorites.
+- Menu data.
+- Inventory.
+- Orders.
+- Notifications.
+- Reviews.
+- Loyalty.
+- Customer-specific personalization.
+- Other persistent business data.
+
+The frontend is responsible for presentation and interaction; it does not replace the backend database as the source of truth.
+
+---
+
+# 🔁 Reliability & Business Logic
+
+Important business operations are handled server-side.
+
+### Inventory
+
+```text
+Order Request
+    ↓
+Check Stock
+    ↓
+Reduce Stock
+    ↓
+Create Order
+    ↓
+Success → Keep Change
+    ↓
+Failure → Restore Stock
+```
+
+### Coupons & Offers
+
+```text
+Coupon / Offer
+      ↓
+Validate Customer
+      ↓
+Validate Eligibility
+      ↓
+Calculate Discount
+      ↓
+Record Usage
+```
+
+### Loyalty
+
+```text
+Eligible Order
+      ↓
+Calculate Qualifying Spend
+      ↓
+Award Points
+      ↓
+Store Loyalty Transaction
+```
+
+This prevents critical business calculations from being controlled only by the browser.
+
+---
+
+# 🎨 UI & Product Design Principle
+
+The established RDX Fast Food interface is preserved throughout development.
+
+Future changes should:
+
+- Preserve the existing layout.
+- Preserve established colors and visual styling.
+- Preserve navigation.
+- Preserve existing functionality.
+- Avoid unnecessary redesign.
+- Keep new features consistent with the current RDX Fast Food design language.
+- Improve capability without disrupting the established customer experience.
+
+---
+
+# 🧭 From Restaurant Website to Full Platform
+
+RDX Fast Food was developed incrementally from a customer-facing restaurant website into a connected full-stack restaurant platform.
+
+The overall journey was:
+
+```text
+Restaurant Website Foundation
+        ↓
+Menu Discovery
+        ↓
+Search & Filtering
+        ↓
+Favorites
+        ↓
+Cart & Quantity Management
+        ↓
+Checkout
+        ↓
+Delivery / Pickup
+        ↓
+Customer Authentication
+        ↓
+Order History & Reorder
+        ↓
+Reviews
+        ↓
+Coupons & Offers
+        ↓
+Order Tracking
+        ↓
+Notifications
+        ↓
+Admin Dashboard
+        ↓
+Menu Management
+        ↓
+Order Management
+        ↓
+Kitchen Dashboard
+        ↓
+Inventory Management
+        ↓
+Analytics
+        ↓
+Invoice Generation
+        ↓
+Loyalty Points
+        ↓
+AI Recommendations
+        ↓
+Personalized Menu
+        ↓
+Advanced Analytics
+        ↓
+MongoDB-backed Full-stack Platform
+        ↓
+Netlify + Render + MongoDB Atlas Deployment
+```
+
+---
+
+# 🌐 Production Deployment Workflow
+
+## Frontend
+
+```text
+Developer
+    ↓
+Git
+    ↓
+GitHub
+    ↓
+Netlify
+    ↓
+npm run build
+    ↓
+dist/
+    ↓
+Live React Application
+```
+
+## Backend
+
+```text
+Developer
+    ↓
+Git
+    ↓
+GitHub
+    ↓
+Render
+    ↓
+npm install
+    ↓
+npm start
+    ↓
+Node.js + Express API
+```
+
+## Database
+
+```text
+Render Backend
+      ↓
+Mongoose
+      ↓
+MongoDB Atlas
+      ↓
+rdx_fast_food
+```
+
+---
+
+# 🔗 Production Request Flow
+
+```text
+Customer
+   ↓
+https://rdx-fast-food.netlify.app
+   ↓
+React + Vite
+   ↓
+/api/*
+   ↓
+Netlify Proxy
+   ↓
+https://rdx-fast-food.onrender.com
+   ↓
+Node.js + Express
+   ↓
+Authentication + Business Logic
+   ↓
+Mongoose
+   ↓
+MongoDB Atlas
+```
+
+---
+
+# 🧪 Production Verification Checklist
+
+## Customer Experience
+
+- [ ] Homepage loads.
+- [ ] Menu loads from backend.
+- [ ] Search works.
+- [ ] Filters work.
+- [ ] Favorites work.
+- [ ] Cart works.
+- [ ] Quantity changes persist.
+- [ ] Login works.
+- [ ] Customer session persists.
+- [ ] Checkout works.
+- [ ] Delivery selection works.
+- [ ] Pickup selection works.
+- [ ] Coupons work.
+- [ ] Offers work.
+- [ ] Loyalty works.
+- [ ] Order placement works.
+- [ ] Order history works.
+- [ ] Reorder works.
+- [ ] Order tracking works.
+- [ ] Notifications work.
+- [ ] Reviews work.
+- [ ] Recommendations work.
+- [ ] Personalized menu works.
+
+## Administration
+
+- [ ] Admin login works.
+- [ ] Dashboard loads.
+- [ ] Menu management works.
+- [ ] Order management works.
+- [ ] Kitchen dashboard works.
+- [ ] Inventory works.
+- [ ] Analytics work.
+- [ ] Invoice generation works.
+- [ ] Payment/bill status updates work.
+
+## Infrastructure
+
+- [ ] Netlify frontend is published.
+- [ ] Netlify `/api` proxy reaches Render.
+- [ ] Render backend is running.
+- [ ] MongoDB Atlas connection is healthy.
+- [ ] Production CORS is configured.
+- [ ] Production authentication cookie works.
+- [ ] Production secrets are not committed to GitHub.
+
+---
+
+# 🚫 Out of Scope
+
+The following capabilities are intentionally excluded from the current product:
+
+- Multiple Restaurant Branches.
+- Automated Marketing.
+
+They should not be introduced unless explicitly requested.
+
+---
+
+# 🏁 Final Product Summary
+
+RDX Fast Food brings together:
+
+```text
+Customer Ordering
+       +
+Authentication
+       +
+Menu Management
+       +
+Cart & Checkout
+       +
+Orders & Tracking
+       +
+Kitchen Operations
+       +
+Inventory
+       +
+Coupons & Offers
+       +
+Reviews
+       +
+Notifications
+       +
+Loyalty
+       +
+AI Recommendations
+       +
+Personalization
+       +
+Analytics
+       +
+Invoices
+       +
+Cloud Deployment
+```
+
+**RDX Fast Food is not only a menu and ordering interface; it is a connected restaurant operations platform built around customer experience, operational control and centralized data.**
