@@ -16,8 +16,6 @@
 ![Database](https://img.shields.io/badge/Database-MongoDB_Atlas-47A248?logo=mongodb&logoColor=white)
 ![ODM](https://img.shields.io/badge/ODM-Mongoose-880000?logo=mongodb&logoColor=white)
 ![Authentication](https://img.shields.io/badge/Auth-JWT%20%2B%20HTTP--Only%20Cookie-orange)
-![Frontend Hosting](https://img.shields.io/badge/Frontend-Netlify-00C7B7?logo=netlify&logoColor=white)
-![Backend Hosting](https://img.shields.io/badge/Backend-Render-46E3B7?logo=render&logoColor=white)
 
 </div>
 
